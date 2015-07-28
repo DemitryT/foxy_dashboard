@@ -1,0 +1,25 @@
+development: &default
+  adapter: postgresql
+  database: foxy_dashboard_development
+  encoding: utf8
+  min_messages: warning
+  pool: 5
+  timeout: 5000
+
+test:
+  <<: *default
+  database: foxy_dashboard_test
+
+staging:
+  <<: *default
+  pool: 25
+  database: foxy_dashboard_staging
+  #username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  #password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+
+production:
+  <<: *default
+  pool: 25
+  database: foxy_dashboard_production
+  #username: <%= ENV['POSTGRESQL_USERNAME'] %>
+  #password: <%= ENV['POSTGRESQL_PASSWORD'] %>
