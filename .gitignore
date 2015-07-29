@@ -103,3 +103,7 @@ bower.json
 .powenv
 
 
+
+.env
+
+dump.rdb
