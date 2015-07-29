@@ -3,7 +3,6 @@ require 'jbuilder'
 
 class HitFoxFeed
   def initialize(user,org,token)
-
     @feed = GithubFeed.new(user,org, token)
   end
 
