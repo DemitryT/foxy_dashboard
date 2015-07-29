@@ -17,6 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'sidetiq'
 gem 'github_api'
+gem 'rake'
 
 group :development, :test do
   gem 'byebug'
