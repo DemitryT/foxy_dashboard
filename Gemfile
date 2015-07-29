@@ -15,10 +15,20 @@ gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+gem 'sidetiq'
+gem 'github_api'
+gem 'sinatra', :require => nil
 
 group :development, :test do
   gem 'byebug'
   gem 'spring'
   gem 'web-console', '~> 2.0'
+  gem 'dotenv-rails'
+end
+
+group :test do
+  gem 'rspec-rails'
+  gem 'vcr'
+  gem 'webmock'
 end
 
