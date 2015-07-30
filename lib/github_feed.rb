@@ -1,6 +1,6 @@
 require 'faraday'
-require 'functions/symbolize_keys'
-require 'entities/push_event'
+require 'modules/symbolize_keys'
+require 'push_event'
 
 class GithubFeed
 

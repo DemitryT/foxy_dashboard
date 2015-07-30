@@ -2,11 +2,12 @@ require 'rails_helper'
 require 'hit_fox_hub'
 
 describe 'HitFoxHub' do
-  let(:hub) { HitFoxHub.new }
+  let(:token) { ENV['GITHUB'] }
+  let(:hub) { HitFoxFeed.new 'nic-lan', 'HitFox', token }
 
   it 'returns the repo list' do
-    VCR.use_cassette 'nic_lan_repos' do
-      expect(hub.repos).to be_success
+    VCR.use_cassette 'hit_fox_hub_events' do
+      expect(hub.events).to be_success
     end
   end
 end

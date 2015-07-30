@@ -1,5 +1,5 @@
-require 'functions/symbolize_keys'
-require 'entities/github_event'
+# require 'functions/symbolize_keys'
+require 'github_event'
 
 class PushEvent < GithubEvent
   def author

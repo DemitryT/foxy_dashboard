@@ -17,7 +17,10 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'sidetiq'
 gem 'github_api'
-gem 'sinatra', :require => nil
+gem 'sinatra', :require => nil #needed for sidekiq monitoring
+
+gem 'redis'
+gem 'yajl-ruby', require: 'yajl'
 
 group :development, :test do
   gem 'byebug'
