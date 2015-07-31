@@ -1,15 +1,8 @@
 require 'rails_helper'
-require 'pull_request_event'
-require 'fakes/pull_request'
 
 RSpec.describe 'PullRequestEvent' do
   let(:fake_pull) { FAKE_PR }
   let(:pull_request) { PullRequestEvent.new fake_pull }
-
-  let(:name) { fake_pull[:actor][:login] }
-  it '#name' do
-    expect(pull_request.author).to eq fake_pull[:actor][:login]
-  end
 
   let(:branch) { fake_pull[:payload][:pull_request][:title] }
   it '#title' do
@@ -44,5 +37,25 @@ RSpec.describe 'PullRequestEvent' do
   let(:pr_number) { fake_pull[:payload][:pull_request][:number] }
   it '#body' do
     expect(pull_request.pr_number).to eq pr_number
+  end
+
+  let(:json) { pull_request.json }
+  it '#json' do
+    # super related keys
+    expect(json).to have_key :type
+    expect(json).to have_key :timestamp
+    expect(json).to have_key :avatar
+    expect(json).to have_key :ago
+    expect(json).to have_key :repo
+    expect(json).to have_key :author
+
+    # class related
+    expect(json).to have_key :branch
+    expect(json).to have_key :body
+    expect(json).to have_key :commits
+    expect(json).to have_key :deletions
+    expect(json).to have_key :additions
+    expect(json).to have_key :changed_files
+    expect(json).to have_key :pr_number
   end
 end

@@ -1,5 +1,5 @@
 class GithubEvent
-  def initialize(json_data)
+  def initialize(json_data = {})
     @data = json_data
   end
 
@@ -39,5 +39,16 @@ class GithubEvent
 
   def repo
     @data[:repo][:name]
+  end
+
+  def json
+    {
+      type: type,
+      timestamp: timestamp,
+      avatar: avatar,
+      ago: ago,
+      repo: repo,
+      author: author
+    }
   end
 end

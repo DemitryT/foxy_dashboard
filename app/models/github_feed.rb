@@ -1,24 +1,24 @@
 require 'faraday'
-require 'modules/symbolize_keys'
-require 'push_event'
+require 'modules/feed_helper'
 
 class GithubFeed
+  include FeedHelper
 
-  # Types of events displayed on feed
-  EVENT_TYPES = ['PushEvent']
+  TYPES = %w(PushEvent PullRequestEvent)
 
   def initialize(user, org, token)
     @token  = token
     @user   = user
     @org    = org
     @client = Faraday.new(url: 'https://api.github.com/')
+
   end
 
   def events
     events = json_get("/users/#{@user}/events/orgs/#{@org}")
     events.map do |event_json|
       event_type = event_json[:type]
-      Object.const_get(event_type).new(event_json) if EVENT_TYPES.include?(event_type)
+      Object.const_get(event_type).new(event_json) if TYPES.include?(event_type)
     end.compact
   end
 

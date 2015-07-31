@@ -1,5 +1,3 @@
-require 'github_event'
-
 class PullRequestEvent < GithubEvent
   def branch
     @data[:payload][:pull_request][:title]
@@ -27,5 +25,19 @@ class PullRequestEvent < GithubEvent
 
   def pr_number
     @data[:payload][:pull_request][:number]
+  end
+
+  def json
+    super.merge(
+      {
+        branch: branch,
+        body: body,
+        commits: commits,
+        deletions: deletions,
+        additions: additions,
+        changed_files: changed_files,
+        pr_number: pr_number
+      }
+    )
   end
 end

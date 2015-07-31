@@ -1,5 +1,3 @@
-require 'github_event'
-
 class PushEvent < GithubEvent
   def branch
     @data[:payload][:ref].split("/").last
@@ -11,5 +9,15 @@ class PushEvent < GithubEvent
 
   def project
     @data[:repo][:name]
+  end
+
+  def json
+    super.merge(
+      {
+        branch: branch,
+        commit_message: commit_message,
+        project: project
+      }
+    )
   end
 end

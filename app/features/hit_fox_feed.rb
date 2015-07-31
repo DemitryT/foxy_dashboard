@@ -1,5 +1,4 @@
-require 'yajl'
-require 'github_feed'
+require 'json'
 
 class HitFoxFeed
   def initialize(user, org, token)
@@ -8,26 +7,15 @@ class HitFoxFeed
   end
 
   def update
-    @redis.set 'HitFoxFeed', Yajl::Encoder.new.encode(retrieved_events)
+    @redis.set 'HitFoxFeed', json
   end
 
   def events
-    @redis.get 'HitFoxFeed'
+    @redis.get('HitFoxFeed').to_json
   end
 
   private
-  def retrieved_events
-    @feed.events.map do |event|
-      {
-        commit_sha: event.commit[:sha],
-        message:    event.commit[:message],
-        author:     event.author[:login],
-        url:        event.commit[:url],
-        branch:     event.branch,
-        avatar_url: event.author[:avatar_url],
-        ago:        event.ago,
-        title:      event.title
-      }
-    end
+  def json
+    @feed.events.map { |event| event.json }
   end
 end

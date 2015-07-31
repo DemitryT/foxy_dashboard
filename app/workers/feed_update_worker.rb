@@ -1,4 +1,4 @@
-class HitFoxFeedWorker
+class FeedUpdateWorker
   include Sidekiq::Worker
   include Sidetiq::Schedulable
 
