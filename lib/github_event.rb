@@ -24,4 +24,20 @@ class GithubEvent
       "#{day} days ago"
     end
   end
+
+  def timestamp
+    Time.iso8601(@data[:created_at])
+  end
+
+  def avatar
+    @data[:actor][:avatar_url]
+  end
+
+  def author
+    @data[:actor][:login]
+  end
+
+  def repo
+    @data[:repo][:name]
+  end
 end
