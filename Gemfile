@@ -19,8 +19,6 @@ gem 'sidetiq'
 gem 'github_api'
 gem 'sinatra', :require => nil #needed for sidekiq monitoring
 gem 'redis'
-gem 'swagger-docs'
-gem 'swagger-ui'
 gem 'responders'
 
 group :development, :test do
@@ -34,8 +32,4 @@ group :test do
   gem 'rspec-rails'
   gem 'vcr'
   gem 'webmock'
-end
-
-group :development do
-  gem 'rubocop', require: false
 end
