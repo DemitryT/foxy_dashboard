@@ -1,21 +1,23 @@
 require 'json'
 
 class HitFoxFeed
-  def initialize(user, org, token)
-    @feed = GithubFeed.new(user, org, token)
-    @redis = $redis
+  include RedisHelper
+
+  def initialize
+    @feed = GithubFeed.new
+    @redis = new_redis_client
   end
 
   def update
-    @redis.set 'HitFoxFeed', json
+    @redis.set 'HitFoxFeed', retrieved_events
   end
 
   def events
-    @redis.get('HitFoxFeed').to_json
+    @redis.get('HitFoxFeed')
   end
 
   private
-  def json
-    @feed.events.map { |event| event.json }
+  def retrieved_events
+    @feed.events.map{ |event| event.json }.to_json
   end
 end

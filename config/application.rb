@@ -30,7 +30,7 @@ module FoxyDashboard
     config.paths.add File.join('app', 'features'), glob: File.join('**', '*.rb')
     config.autoload_paths += Dir[Rails.root.join('app', 'features', '*')]
 
-    config.paths.add File.join('lib', 'modules'), glob: File.join('**', '*.rb')
-    config.autoload_paths += Dir[Rails.root.join('lib', 'modules', '*')]
+    config.paths.add File.join('controllers', 'api/v1'), glob: File.join('**', '*.rb')
+    config.autoload_paths += Dir[Rails.root.join('controllers', 'api/v1', '*')]
   end
 end

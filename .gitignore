@@ -113,3 +113,5 @@ dump.rdb
 app/views/hit_fox_feed/events.json
 
 spec/vcr
+
+public/apidocs

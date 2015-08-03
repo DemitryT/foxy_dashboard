@@ -1,17 +1,14 @@
 require 'faraday'
-require 'modules/feed_helper'
 
 class GithubFeed
-  include FeedHelper
 
   TYPES = %w(PushEvent PullRequestEvent)
 
-  def initialize(user, org, token)
+  def initialize(user =ENV['GITHUB_USER'], org ='HitFox', token =ENV['GITHUB'])
     @token  = token
     @user   = user
     @org    = org
     @client = Faraday.new(url: 'https://api.github.com/')
-
   end
 
   def events
@@ -23,7 +20,6 @@ class GithubFeed
   end
 
   private
-
   def json_get(path)
     response = @client.get(path) do |req|
       req.headers['Authorization'] = "token #{@token}"
@@ -37,5 +33,14 @@ class GithubFeed
     else
       raise 'Only Array or Hash'
     end
+  end
+
+  def symbolize_keys(hash)
+    hash.inject({}){|new_hash, key_value|
+      key, value = key_value
+      value = symbolize_keys(value) if value.is_a?(Hash)
+      new_hash[key.to_sym] = value
+      new_hash
+    }
   end
 end
