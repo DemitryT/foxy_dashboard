@@ -4,7 +4,7 @@ class GithubFeed
 
   TYPES = %w(PushEvent PullRequestEvent)
 
-  def initialize(user =ENV['GITHUB_USER'], org ='HitFox', token =ENV['GITHUB'])
+  def initialize(user=ENV['GITHUB_USER'], org='HitFox', token=ENV['GITHUB'])
     @token  = token
     @user   = user
     @org    = org
@@ -15,7 +15,7 @@ class GithubFeed
     events = json_get("/users/#{@user}/events/orgs/#{@org}")
     events.map do |event_json|
       event_type = event_json[:type]
-      Object.const_get(event_type).new(event_json) if TYPES.include?(event_type)
+      event_type.constantize.send(:new, event_json) if TYPES.include?(event_type)
     end.compact
   end
 

@@ -1,6 +1,6 @@
 require 'json'
 
-class HitFoxFeed
+class HitFoxActivity
   include RedisHelper
 
   def initialize
@@ -17,7 +17,9 @@ class HitFoxFeed
   end
 
   private
+
   def retrieved_events
-    @feed.events.map{ |event| event.json }.to_json
+    @feed.events.map { |event| event.json }.to_json
   end
 end
+

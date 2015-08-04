@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'HitFoxHub' do
-  let(:feed) { HitFoxFeed.new ENV['GITHUB_USER'], 'HitFox', ENV['GITHUB'] }
+  let(:feed) { HitFoxActivity.new ENV['GITHUB_USER'], 'HitFox', ENV['GITHUB'] }
 
   it '#events' do
     VCR.use_cassette 'github_feed' do
