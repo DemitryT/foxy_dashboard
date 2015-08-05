@@ -1,2 +1,5 @@
 # Foxy Dashboard
-Prototype of a custom solution for an internal dashboard with Sinatra.
+Internal TechDev Dashboard
+
+# TODO
+Update this readme with setup instructions and anything else that's relevant.
