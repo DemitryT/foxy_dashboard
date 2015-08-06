@@ -21,6 +21,11 @@ gem 'sinatra', :require => nil #needed for sidekiq monitoring
 gem 'redis'
 gem 'responders'
 
+gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+
 group :development, :test do
   gem 'byebug'
   gem 'spring'
