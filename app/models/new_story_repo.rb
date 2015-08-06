@@ -14,12 +14,12 @@ class NewStoryRepo
 
   def present(story)
     {
-      'post_title' => story['title'],
-      'score' => story['score'],
-      'comments' => story['descendants'],
-      'author' => story['by'],
-      'timestamp' => story['time'],
-      'link_source' => story['url']
+      post_title: story['title'],
+      score: story['score'],
+      comments: story['descendants'],
+      author: story['by'],
+      timestamp: story['time'],
+      link_source: story['url']
     }
   end
 end
