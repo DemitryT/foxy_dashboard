@@ -1,6 +1,11 @@
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def google_oauth2
     @user = User.from_omniauth(request.env['omniauth.auth'])
+    redirect @user
+  end
+
+  private
+  def redirect(user)
     if @user.has_permitted_domain?
       if @user.save
         sign_in @user
