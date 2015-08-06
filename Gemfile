@@ -25,6 +25,7 @@ gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
+gem 'firebase'
 
 group :development, :test do
   gem 'byebug'
