@@ -1,5 +1,5 @@
 class NewStoryRepo
-  def initialize(client)
+  def initialize( client = Firebase::Client.new('https://hacker-news.firebaseio.com/v0') )
     @client =  client
   end
 

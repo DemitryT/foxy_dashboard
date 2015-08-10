@@ -8,4 +8,3 @@ class FeedUpdateWorker
     HitFoxActivity.new.update
   end
 end
-
