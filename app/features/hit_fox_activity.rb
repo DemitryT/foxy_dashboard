@@ -13,7 +13,7 @@ class HitFoxActivity
   end
 
   def events
-    @redis.get('HitFoxFeed')
+    @redis.get 'HitFoxFeed'
   end
 
   private

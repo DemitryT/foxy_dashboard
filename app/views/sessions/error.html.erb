@@ -1,0 +1,4 @@
+<h2>Sorry, we could not sign you in using that account.</h2>
+<p>Please note that we currently allow email addresses from the following domains:</p>
+<p><%= User::PERMITTED_DOMAINS.join(", ") %></p>
+<p><%= link_to "Sign in using a different account", omniauth_authorize_path(:user, :google_oauth2, :prompt => :select_account) %></p>
