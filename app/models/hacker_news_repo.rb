@@ -9,11 +9,15 @@ class HackerNewsRepo
   end
 
   def all
-    new_stories_ids.map { |story_id| @repo.story_with story_id }
+    relevant new_stories_ids.map { |story_id| @repo.story_with story_id }
   end
 
   private
   def new_stories_ids
     @client.get('newstories', print: 'pretty').body[0,@max_st]
+  end
+
+  def relevant(stories)
+    stories.select { |story| story != { } }
   end
 end
