@@ -6,7 +6,8 @@ class NewStoryRepo
   end
 
   def story_with(story_id)
-    present story(story_id)
+    story = story(story_id)
+    story ? present(story) : { }
   end
 
   private
