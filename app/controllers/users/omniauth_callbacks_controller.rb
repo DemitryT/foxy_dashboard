@@ -15,7 +15,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       end
     else
       flash[:error] = 'Sorry, but we could not log you in via Google.'
-      redirect_to error_session_path
+      redirect_to error_sessions_path
     end
   end
 end

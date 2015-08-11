@@ -22,7 +22,7 @@ describe Users::OmniauthCallbacksController do
 
       it "redirects to the auth error path" do
         get :google_oauth2
-        expect(response).to redirect_to error_session_path
+        expect(response).to redirect_to error_sessions_path
       end
     end
 
@@ -34,7 +34,7 @@ describe Users::OmniauthCallbacksController do
     it "does not authenticate non-HitFox emails" do
       auth.info.email = "nothitfox@nothitfox.com"
       get :google_oauth2
-      expect(response).to redirect_to(error_session_path)
+      expect(response).to redirect_to(error_sessions_path)
     end
   end
 end

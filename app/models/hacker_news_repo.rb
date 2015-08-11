@@ -1,16 +1,19 @@
 class HackerNewsRepo
-  def initialize(hacker_news_uri = 'https://hacker-news.firebaseio.com/v0', story_max = 30)
-    @client =  Firebase::Client.new hacker_news_uri
-    @stories_repo = NewStoryRepo.new @client
-    @story_max = story_max
+  CLIENT = Firebase::Client.new('https://hacker-news.firebaseio.com/v0')
+  MAX_ST = 30
+
+  def initialize( client = CLIENT, max_st = MAX_ST)
+    @client =  client
+    @repo = NewStoryRepo.new client
+    @max_st = max_st
   end
 
   def all
-    new_stories_ids.map { |story_id| NewStoryRepo.new.story_with story_id }
+    new_stories_ids.map { |story_id| @repo.story_with story_id }
   end
 
   private
   def new_stories_ids
-    @client.get('newstories', print: 'pretty').body[0,@story_max]
+    @client.get('newstories', print: 'pretty').body[0,@max_st]
   end
 end
