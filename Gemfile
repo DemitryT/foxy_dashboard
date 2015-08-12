@@ -32,12 +32,15 @@ group :development, :test do
   gem 'spring'
   gem 'web-console', '~> 2.0'
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :test do
   gem 'rspec-rails'
   gem 'vcr'
   gem 'webmock'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
 end
 
 group :development do

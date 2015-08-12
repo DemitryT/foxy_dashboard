@@ -1,7 +1,7 @@
 module Api
   module V1
     class HackerNewsController < ApplicationController
-      before_action :authenticate_user!
+      before_action ApiKeyAuthentication
 
       respond_to :json
 
