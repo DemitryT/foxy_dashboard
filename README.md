@@ -32,6 +32,7 @@ Nothing to be done... Out of the Box :-)
 # Up and Run
 Foxy Dashboard uses workers to manage jobs that are pulling information from different APIs. So run:
 ```bash
+redis-server
 bundle exec sidekiq
 ```
 
@@ -40,7 +41,7 @@ Now that the background processes are ready to be run, start the server:
 rails s
 ```
 
-Login with your HitFox/Finleap account. Navigate to the end points that at the moment are:
+Navigate to the end points. You need an API Key to access the services:
 * `api/v1/hit_fox_feeds.json`
 * `api/v1/hacker_news.json`
 
